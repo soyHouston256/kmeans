@@ -6,12 +6,12 @@
 #SBATCH --ntasks=1            # número de procesos MPI
 #SBATCH --time=00:10:00
 #SBATCH --partition=standard
-#SBATCH --array=1,2,3,4,5,6     # 6 tamaños diferentes
+#SBATCH --array=1,2,3,4,5,6     # 6 tamaños diferentes. p= 
 
 # ---------------------------
 # LISTA DE N PARA SCALING
 # ---------------------------
-N_VALUES=(32768 65536 131072 262144 524288 1048576)
+N_VALUES=(32768 65536 131072 262144 524288 1048576)  #n
 module load python3
 module load py3-mpi4py
 module load py3-scipy
@@ -30,4 +30,3 @@ export KMEANS_N=$N
 
 # Ejecutar el código MPI
 mpirun -np $SLURM_NTASKS python3.6 Kmeans_mpi.py
-
